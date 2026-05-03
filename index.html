@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kirana Supply Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <span class="brand">Kirana Supply Hub</span>
+        <p class="tagline">Connect your local shop to fast, low-cost inventory and smart supply workflows.</p>
+      </div>
+      <button id="newOrderBtn" class="primary-btn">New Purchase Order</button>
+    </header>
+
+    <main>
+      <section class="hero-card">
+        <div>
+          <h1>Inventory, orders, and supplier access in one place</h1>
+          <p>Use this prototype to explore how kirana stores can order stock faster, compare wholesale pricing, and keep shelves stocked without middlemen.</p>
+        </div>
+        <div class="hero-actions">
+          <button id="exploreSuppliersBtn" class="secondary-btn">Explore suppliers</button>
+          <button id="viewInventoryBtn" class="secondary-btn">View inventory</button>
+        </div>
+      </section>
+
+      <section class="section-block search-block">
+        <div class="hero-search">
+          <input id="searchInput" type="search" placeholder="Search suppliers, products, or SKUs" />
+          <button id="registerSupplierBtn" class="secondary-btn">Register supplier</button>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="metric-card">
+          <h2>Pending orders</h2>
+          <p id="pendingOrdersCount">0</p>
+        </article>
+        <article class="metric-card">
+          <h2>Low-stock SKUs</h2>
+          <p id="lowStockCount">0</p>
+        </article>
+        <article class="metric-card">
+          <h2>Best supplier</h2>
+          <p id="bestSupplier">--</p>
+        </article>
+        <article class="metric-card">
+          <h2>Reorder value</h2>
+          <p id="reorderValue">&#x20B9;0</p>
+        </article>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>Supply chain finance</h2>
+          <p>Access working capital and supplier credit so you can buy stock ahead of demand.</p>
+        </div>
+        <div class="card-grid finance-grid">
+          <article class="card finance-card">
+            <h3>Available credit</h3>
+            <p id="availableCredit">&#x20B9;0</p>
+            <p id="creditTerms">--</p>
+            <p id="creditUsed">--</p>
+            <button id="viewCreditBtn" class="primary-btn">View credit terms</button>
+          </article>
+          <article class="card finance-card">
+            <h3>Restock recommendation</h3>
+            <p id="financeTip">Use credit to stock top-selling items and avoid missed sales.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>Supplier marketplace</h2>
+          <p>Find faster inventory from wholesale partners with transparent pricing, delivery, and credit support.</p>
+        </div>
+        <div id="supplierList" class="card-grid"></div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>Inventory tracker</h2>
+          <p>Track current stock, restock needs, and supplier matches for your store.</p>
+        </div>
+        <div id="inventoryList" class="table-card"></div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2>Purchase orders</h2>
+          <p>Review orders, approve pending buys, and track supplier delivery commitments.</p>
+        </div>
+        <div id="orderHistory" class="table-card"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="orderModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Create purchase order</h2>
+      <label>
+        Choose supplier
+        <select id="supplierSelect"></select>
+      </label>
+      <label>
+        Item
+        <select id="itemSelect"></select>
+      </label>
+      <label>
+        Quantity
+        <input id="qtyInput" type="number" min="1" value="10" />
+      </label>
+      <label>
+        Delivery time
+        <select id="deliverySelect">
+          <option value="2">2 days</option>
+          <option value="3">3 days</option>
+          <option value="5">5 days</option>
+        </select>
+      </label>
+      <div class="modal-actions">
+        <button id="submitOrderBtn" class="primary-btn">Submit order</button>
+        <button id="cancelOrderBtn" class="secondary-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="supplierModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Register supplier partner</h2>
+      <label>
+        Name
+        <input id="newSupplierName" type="text" placeholder="Wholesale partner name" />
+      </label>
+      <label>
+        Rating
+        <input id="newSupplierRating" type="number" min="1" max="5" step="0.1" value="4.5" />
+      </label>
+      <label>
+        Lead time
+        <input id="newSupplierLead" type="text" placeholder="2-4 days" />
+      </label>
+      <label>
+        Offer
+        <input id="newSupplierOffer" type="text" placeholder="Enter partner offer" />
+      </label>
+      <div class="modal-actions">
+        <button id="submitSupplierBtn" class="primary-btn">Add partner</button>
+        <button id="cancelSupplierBtn" class="secondary-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
